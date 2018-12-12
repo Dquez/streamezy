@@ -21,7 +21,7 @@ export const signOut = () => {
     }
 }
 
-export const createStream = (formValues, navigationCB) => async (dispatch, getState) => {
+export const createStream = formValues => async (dispatch, getState) => {
     const {userId} = getState().auth;
 
     const response = await streams.post('/streams', {...formValues, userId});
@@ -56,8 +56,9 @@ export const deleteStream = id => async dispatch =>{
     })
 }
 
-export const editStream = (id, formValues) => dispatch => {
-    const response = streams.put(`/streams/${id}`, formValues)
+export const editStream = (id, formValues) => async dispatch => {
+    
+    const response =  await streams.put(`/streams/${id}`, formValues)
     dispatch({
         type: EDIT_STREAM,
         payload: response.data
