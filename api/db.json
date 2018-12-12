@@ -4,47 +4,6 @@
       "title": "dq",
       "description": "dq",
       "id": 1
-    },
-    {
-      "title": " New stream",
-      "description": "My new stream",
-      "userId": "104172360244756468300",
-      "id": 2
-    },
-    {
-      "title": " Check stream",
-      "description": "My check stream number 5",
-      "id": 3
-    },
-    {
-      "title": "stream test",
-      "description": "streamy",
-      "userId": "104172360244756468300",
-      "id": 4
-    },
-    {
-      "title": "expected",
-      "description": "behavior",
-      "userId": "104172360244756468300",
-      "id": 5
-    },
-    {
-      "title": "unexpected",
-      "description": "behavior",
-      "userId": "104172360244756468300",
-      "id": 6
-    },
-    {
-      "title": "history test",
-      "description": "history",
-      "userId": "104172360244756468300",
-      "id": 7
-    },
-    {
-      "title": "component refactor",
-      "description": "refactored",
-      "userId": "104172360244756468300",
-      "id": 8
     }
   ]
 }
