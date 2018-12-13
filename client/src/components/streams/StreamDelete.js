@@ -1,38 +1,53 @@
 import React, {Component} from 'react';
 import Modal from '../Modal';
 import history from '../../history';
-import {fetchStream} from '../../actions';
+import {Link} from 'react-router-dom';
+import {fetchStream, deleteStream} from '../../actions';
 import {connect} from 'react-redux';
 
 class StreamDelete extends Component{
     state = { streamId : this.props.match.params.id}
     componentDidMount(){
-        this.props.fetchStream(this.state.streamId)
+        this.props.fetchStream(this.state.streamId).then(()=>{
+            if(this.props.currentUserId !== this.props.stream.userId) history.push('/')
+        })
     }
-    render(){
-        const actions = (
+    deleteStream = () =>{
+        this.props.deleteStream(this.state.streamId)
+    }
+    renderActions = () =>{
+        return (
             <React.Fragment>
-                <button className='ui button negative'>Delete</button>
-                <button className='ui button'>Cancel</button>
+                <button onClick={this.deleteStream} className='ui button negative'>
+                    Delete
+                </button>
+                <Link to='/' className='ui button'>Cancel</Link>
             </React.Fragment>
         )
-        if(!this.props.stream) return <div>Loading...</div>
+    }
+    renderContent = () =>{
+        if(!this.props.stream){
+            return 'Are you sure you want to delete this stream?'
+        }
+        return `Are you sure you want to delete stream with title: ${this.props.stream.title}`
+    }
+    render(){
         return (
-            <div>
-                Stream Delete
                 <Modal 
                 title='Delete Stream'
-                content={`Are you sure you want to delete the ${this.props.stream.title} stream?`}
+                content={this.renderContent()}
                 onDismiss={()=>history.push('/')}
-                actions={actions}
+                actions={this.renderActions()}
                 />
-            </div>
         )
     }  
 }
 const mapStateToProps = (state, ownProps) =>{
     const streamId = ownProps.match.params.id;
-    return {stream: state.streams[streamId]}
+    return {
+        stream: state.streams[streamId],
+        currentUserId: state.auth.userId
+    }
 }
 
-export default connect(mapStateToProps, {fetchStream})(StreamDelete);
+export default connect(mapStateToProps, {fetchStream, deleteStream})(StreamDelete);
