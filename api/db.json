@@ -1,9 +1,16 @@
 {
   "streams": [
     {
-      "title": "dq",
-      "description": "dq",
+      "title": "Test",
+      "description": "Streamezy",
+      "userId": "104172360244756468300",
       "id": 1
+    },
+    {
+      "title": "Test stream",
+      "description": "Stream",
+      "userId": "104172360244756468300",
+      "id": 2
     }
   ]
 }
