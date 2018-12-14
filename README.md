@@ -1,4 +1,4 @@
-# streaming-app
+# Streamezy
 
 This application uses modern React-Redux design patterns to allow users to create, read, update and delete their streams.
 
