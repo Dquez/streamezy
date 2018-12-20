@@ -18,10 +18,10 @@ const streamFunctions = {
   //     .then(dbModel => res.json(dbModel))
   //     .catch(err => res.status(422).json(err));
   // },
-  createStream: function (dbArticle, res) {
-    console.log(dbArticle);
+  createStream: function (dbStream, res) {
+    console.log(dbStream.body);
     db.Stream
-      .create(dbArticle)
+      .create(dbStream.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -46,10 +46,8 @@ const streamFunctions = {
 // deleteStream
 // editStream
 
-router.post("/api/streams", cors(corsOptions), function(req,res){
-  console.log(req);
-})
-// streamFunctions.createStream(req,)
+router.post("/api/streams", cors(corsOptions), streamFunctions.createStream);
+
 // router.get("/api/articles/:email", streamFunctions.findAll);
 
 // router.patch("/api/articles/:id", streamFunctions.update);
