@@ -1,9 +1,14 @@
 // const path = require("path");
 const router = require("express").Router();
 const db = require("../models");
-// cors setup
+
+// Cors setup
 const cors = require('cors');
-const corsOptions = require('../server').corsOptions;
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  optionsSuccessStatus: 200
+}
+router.use(cors());
 
 const streamFunctions = {
   // findAll: function (req, res) {
@@ -60,13 +65,13 @@ router.post("/api/streams", cors(corsOptions), function(req,res){
 //   res.sendFile(path.join(__dirname, "../client/build/index.html"));
 // });
 
-// module.exports = router;
-module.exports = function (app) {
-  // app.get('/', requireAuth, function (req, res) {
-  //      res.send({
-  //           hi: 'there'
-  //      });
-  // })
-  app.post('/api/streams', cors(corsOptions), streamFunctions.createStream);
-  // app.post('/signin', cors(corsOptions), requireSignin, Authentication.signin);
-}
+module.exports = router;
+// module.exports = function (app) {
+//   // app.get('/', requireAuth, function (req, res) {
+//   //      res.send({
+//   //           hi: 'there'
+//   //      });
+//   // })
+//   app.post('/api/streams', cors(corsOptions), streamFunctions.createStream);
+//   // app.post('/signin', cors(corsOptions), requireSignin, Authentication.signin);
+// }
