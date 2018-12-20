@@ -1,3 +1,3 @@
 module.exports = {
-  Article: require("./Stream")
+  Stream: require("./Stream")
 };
