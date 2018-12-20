@@ -1,7 +1,7 @@
 'use strict'
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 8080;
 const bodyParser = require("body-parser");
 
 // Configure body parser for AJAX requests
@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Serve up static assets
 // app.use(express.static("client/build"));
 // Add routes, both API and view
-// app.use(streamsController);
+app.use(streamsController);
 
 
 
