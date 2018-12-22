@@ -11,15 +11,14 @@ const corsOptions = {
 router.use(cors());
 
 const streamFunctions = {
-  // findAll: function (req, res) {
-  //   db.Stream
-  //     .find({email : req.params.email})
-  //     .sort({ date: -1 })
-  //     .then(dbModel => res.json(dbModel))
-  //     .catch(err => res.status(422).json(err));
-  // },
+  findAll: function (req, res) {
+    db.Stream
+      .find({})
+      .sort({ date: -1 })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   createStream: function (dbStream, res) {
-    console.log(dbStream.body);
     db.Stream
       .create(dbStream.body)
       .then(dbModel => res.json(dbModel))
@@ -48,7 +47,7 @@ const streamFunctions = {
 
 router.post("/api/streams", cors(corsOptions), streamFunctions.createStream);
 
-// router.get("/api/articles/:email", streamFunctions.findAll);
+router.get("api/streams", streamFunctions.findAll);
 
 // router.patch("/api/articles/:id", streamFunctions.update);
 
