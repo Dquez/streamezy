@@ -11,7 +11,7 @@ const corsOptions = {
 router.use(cors());
 
 const streamFunctions = {
-  findAll: function (req, res) {
+  findAllStreams: function (req, res) {
     db.Stream
       .find({})
       .sort({ date: -1 })
@@ -45,15 +45,12 @@ const streamFunctions = {
   // }
 }
 
-
-// fetchStreams
-// fetchStream
 // deleteStream
 // editStream
 
 router.post("/api/streams", cors(corsOptions), streamFunctions.createStream);
 
-router.get("/api/streams", cors(corsOptions), streamFunctions.findAll);
+router.get("/api/streams", streamFunctions.findAllStreams);
 
 router.get("/api/streams/:id", streamFunctions.findStream);
 
