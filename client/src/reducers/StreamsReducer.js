@@ -12,7 +12,7 @@ export default function (state={}, action){
         case CREATE_STREAM:
             return {...state, [action.payload._id] : action.payload};
         case FETCH_STREAMS:
-            return {...state, ..._.mapKeys(action.payload, "id")};
+            return {...state, ..._.mapKeys(action.payload, "_id")};
         case FETCH_STREAM:
             return {...state, [action.payload._id] : action.payload}; 
         case DELETE_STREAM:

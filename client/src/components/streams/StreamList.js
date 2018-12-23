@@ -20,7 +20,6 @@ class StreamList extends Component{
     }
     renderList = () =>{
         return this.props.streams.map(stream =>{
-            console.log(stream);
             return(
                 <div className="item" key={stream._id}>
                     {this.renderAdminButtons(stream)}

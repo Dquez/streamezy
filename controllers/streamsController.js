@@ -18,6 +18,12 @@ const streamFunctions = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  findStream: function (req, res) {
+    db.Stream
+      .findOne({_id: req.params.id})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   createStream: function (dbStream, res) {
     db.Stream
       .create(dbStream.body)
@@ -48,6 +54,8 @@ const streamFunctions = {
 router.post("/api/streams", cors(corsOptions), streamFunctions.createStream);
 
 router.get("/api/streams", cors(corsOptions), streamFunctions.findAll);
+
+router.get("/api/streams/:id", streamFunctions.findStream);
 
 // router.patch("/api/articles/:id", streamFunctions.update);
 
