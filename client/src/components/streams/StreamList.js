@@ -12,20 +12,21 @@ class StreamList extends Component{
         if(this.props.currentUserId === stream.userId){
             return (
                 <div className="right floated content">
-                    <Link to={`/stream/edit/${stream.id}`} className="ui button primary">Edit</Link>
-                    <Link to={`/stream/delete/${stream.id}`} className="ui button negative">Delete</Link>
+                    <Link to={`/stream/edit/${stream._id}`} className="ui button primary">Edit</Link>
+                    <Link to={`/stream/delete/${stream._id}`} className="ui button negative">Delete</Link>
                 </div>
             )
         }
     }
     renderList = () =>{
         return this.props.streams.map(stream =>{
+            console.log(stream);
             return(
-                <div className="item" key={stream.id}>
+                <div className="item" key={stream._id}>
                     {this.renderAdminButtons(stream)}
                     <i className="large middle aligned icon camera" />
                     <div className="content">
-                        <Link to={`/stream/${stream.id}`} className='header'>{stream.title}</Link>
+                        <Link to={`/stream/${stream._id}`} className='header'>{stream.title}</Link>
                     </div>
                     <div className="description">
                         {stream.description}

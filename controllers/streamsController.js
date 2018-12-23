@@ -47,7 +47,7 @@ const streamFunctions = {
 
 router.post("/api/streams", cors(corsOptions), streamFunctions.createStream);
 
-router.get("api/streams", streamFunctions.findAll);
+router.get("/api/streams", cors(corsOptions), streamFunctions.findAll);
 
 // router.patch("/api/articles/:id", streamFunctions.update);
 
