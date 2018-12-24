@@ -36,13 +36,13 @@ const streamFunctions = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  // remove: function (req, res) {
-  //   db.Stream
-  //     .findById({ _id: req.params.id })
-  //     .then(dbModel => dbModel.remove())
-  //     .then(dbModel => res.json(dbModel))
-  //     .catch(err => res.status(422).json(err));
-  // }
+  deleteStream: function (req, res) {
+    db.Stream
+      .findById({ _id: req.params.id })
+      .then(dbModel => dbModel.remove())
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  }
 }
 
 // deleteStream
@@ -54,13 +54,9 @@ router.get("/api/streams", streamFunctions.fetchStreams);
 
 router.get("/api/streams/:id", streamFunctions.fetchStream);
 
+router.delete("/api/streams/:id", streamFunctions.deleteStream)
+
 router.patch("/api/streams/:id", streamFunctions.editStream);
-
-// router.patch("/api/favoriteArticle/:id", streamFunctions.update);
-
-// router.patch("/api/articleTag/:id", streamFunctions.update);
-
-// router.delete("/api/article/:id", streamFunctions.remove)
 
 // //  If no API routes are hit, send the React app
 // router.use(function (req, res) {
