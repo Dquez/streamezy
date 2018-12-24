@@ -11,14 +11,14 @@ const corsOptions = {
 router.use(cors());
 
 const streamFunctions = {
-  findAllStreams: function (req, res) {
+  fetchStreams: function (req, res) {
     db.Stream
       .find({})
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  findStream: function (req, res) {
+  fetchStream: function (req, res) {
     db.Stream
       .findOne({_id: req.params.id})
       .then(dbModel => res.json(dbModel))
@@ -30,12 +30,12 @@ const streamFunctions = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  // update: function (req, res) {
-  //   db.Stream
-  //     .findOneAndUpdate({ _id: req.params.id}, req.body, {new:true})
-  //     .then(dbModel => res.json(dbModel))
-  //     .catch(err => res.status(422).json(err));
-  // },
+  editStream: function (req, res) {
+    db.Stream
+      .findOneAndUpdate({ _id: req.params.id}, req.body, {new:true})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   // remove: function (req, res) {
   //   db.Stream
   //     .findById({ _id: req.params.id })
@@ -50,11 +50,11 @@ const streamFunctions = {
 
 router.post("/api/streams", cors(corsOptions), streamFunctions.createStream);
 
-router.get("/api/streams", streamFunctions.findAllStreams);
+router.get("/api/streams", streamFunctions.fetchStreams);
 
-router.get("/api/streams/:id", streamFunctions.findStream);
+router.get("/api/streams/:id", streamFunctions.fetchStream);
 
-// router.patch("/api/articles/:id", streamFunctions.update);
+router.patch("/api/streams/:id", streamFunctions.editStream);
 
 // router.patch("/api/favoriteArticle/:id", streamFunctions.update);
 
