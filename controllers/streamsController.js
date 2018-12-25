@@ -11,32 +11,32 @@ const corsOptions = {
 router.use(cors());
 
 const streamFunctions = {
-  fetchStreams: function (req, res) {
+  fetchStreams (req, res) {
     db.Stream
       .find({})
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  fetchStream: function (req, res) {
+  fetchStream (req, res) {
     db.Stream
       .findOne({_id: req.params.id})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  createStream: function (dbStream, res) {
+  createStream (dbStream, res) {
     db.Stream
       .create(dbStream.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  editStream: function (req, res) {
+  editStream (req, res) {
     db.Stream
       .findOneAndUpdate({ _id: req.params.id}, req.body, {new:true})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  deleteStream: function (req, res) {
+  deleteStream (req, res) {
     db.Stream
       .findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())
@@ -44,9 +44,6 @@ const streamFunctions = {
       .catch(err => res.status(422).json(err));
   }
 }
-
-// deleteStream
-// editStream
 
 router.post("/api/streams", cors(corsOptions), streamFunctions.createStream);
 
@@ -64,12 +61,3 @@ router.patch("/api/streams/:id", streamFunctions.editStream);
 // });
 
 module.exports = router;
-// module.exports = function (app) {
-//   // app.get('/', requireAuth, function (req, res) {
-//   //      res.send({
-//   //           hi: 'there'
-//   //      });
-//   // })
-//   app.post('/api/streams', cors(corsOptions), streamFunctions.createStream);
-//   // app.post('/signin', cors(corsOptions), requireSignin, Authentication.signin);
-// }
