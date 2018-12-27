@@ -5,10 +5,9 @@ import {StreamList, StreamCreate, StreamEdit, StreamDelete, StreamShow} from './
 import Header from './Header';
 export default () =>{
     return (
-        <div>
-            
+        <React.Fragment>
             <Router history={history}>
-                <div>
+                <React.Fragment>
                     <Header/>
                     <Switch>
                         <Route path='/' exact component={StreamList}/>
@@ -17,8 +16,8 @@ export default () =>{
                         <Route path='/stream/delete/:id' exact component={StreamDelete}/>
                         <Route path='/stream/:id' exact component={StreamShow}/>
                     </Switch>
-                </div> 
+                </React.Fragment> 
             </Router>
-        </div>
+        </React.Fragment>
     )
 }

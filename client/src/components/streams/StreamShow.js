@@ -37,7 +37,7 @@ class StreamShow extends Component{
     }
     renderStream = () =>{
         if(!this.props.stream){
-            return <div>Loading stream...</div>
+            return <>Loading stream...</>
         }
         const {stream} = this.props;
         return (
@@ -54,7 +54,7 @@ class StreamShow extends Component{
     }
     render(){
         return(
-            <div>{this.renderStream()}</div>
+            <>{this.renderStream()}</>
         )
     }
 }
