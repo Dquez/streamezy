@@ -2,12 +2,9 @@ import React from 'react';
 import history from '../history';
 import {Router, Route, Switch} from 'react-router-dom'
 import {StreamList, StreamCreate, StreamEdit, StreamDelete, StreamShow} from './streams';
-import Header from './Header';
 export default () =>{
     return (
             <Router history={history}>
-                <>
-                    <Header/>
                     <Switch>
                         <Route path='/' exact component={StreamList}/>
                         <Route path='/stream/new' exact component={StreamCreate}/>
@@ -15,7 +12,6 @@ export default () =>{
                         <Route path='/stream/delete/:id' exact component={StreamDelete}/>
                         <Route path='/stream/:id' exact component={StreamShow}/>
                     </Switch>
-                </> 
             </Router>
     )
 }

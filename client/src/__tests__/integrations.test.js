@@ -1,7 +1,7 @@
 import React from "react";
 import {mount} from "enzyme";
 import Root from "../Root";
-import App from "../components/App";
+import App from "../components/AppTest";
 import { MemoryRouter } from 'react-router-dom';
 import _ from "lodash";
 import moxios from "moxios";

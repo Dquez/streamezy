@@ -14,15 +14,15 @@ class StreamEdit extends Component{
     }
     render(){
         if(!this.props.stream){
-            return <div> Loading...</div>
+            return <> Loading...</>
         }
         return (
-            <div>
+            <React.Fragment>
                 <h3>Edit a Stream</h3>
                 <StreamForm 
                 initialValues={_.pick(this.props.stream, 'title', 'description')}
                 onSubmit={this.onSubmit} />
-            </div>   
+            </React.Fragment>   
         )
     }
     
@@ -34,3 +34,4 @@ function mapStateToProps(state, ownProps){
 }
 
 export default connect(mapStateToProps, {fetchStream, editStream})(StreamEdit);
+

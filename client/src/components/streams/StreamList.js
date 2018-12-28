@@ -45,13 +45,13 @@ class StreamList extends Component{
     }
     render(){
         return(
-            <div>
+            <React.Fragment>
                 <h2>Streams</h2>
                 <div className="ui celled list">
                 {this.renderList()}
                 {this.renderCreateButton()}
                 </div>
-            </div>
+            </React.Fragment>
         )
     }
 }
