@@ -46,7 +46,7 @@ class StreamShow extends Component{
         }
         const {stream} = this.props;
         return (
-            <div className="item">
+            <div className="item video">
                     <video ref={this.videoRef} style={{width: '70%'}} controls/>
                     <div className="content">
                         {stream.title}

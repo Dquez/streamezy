@@ -44,8 +44,7 @@ describe('App component', ()=>{
         // check if this alters the DOM for other it statements
         moxios.wait(()=> {
             wrapper.update();
-            console.log(wrapper.debug())
-            expect(wrapper.containsMatchingElement('<video/>'));
+            expect(wrapper.containsMatchingElement(<video/>)).toBeTruthy();
             done();
             moxios.uninstall();
         })    
