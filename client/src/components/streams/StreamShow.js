@@ -11,7 +11,12 @@ class StreamShow extends Component{
     componentDidMount(){
         const {id} = this.props.match.params
         this.props.fetchStream(id);
-        this.buildPlayer();
+        try {
+            this.buildPlayer();    
+        } catch (error) { 
+            console.log(error);
+        }
+        
     }
 
     componentDidUpdate(){
