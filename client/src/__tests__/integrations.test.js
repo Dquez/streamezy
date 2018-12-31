@@ -1,10 +1,8 @@
 import React from 'react';
-import {mount,shallow} from 'enzyme';
+import {mount} from 'enzyme';
 import Root from '../Root';
-import App from '../components/AppTest';
+import App from '../components/App';
 import StreamForm from '../components/streams/StreamForm';
-// import StreamList from '../components/streams/StreamList';
-// import {Router} from 'react-router-dom';
 import _ from 'lodash';
 import moxios from 'moxios';
 
@@ -45,6 +43,9 @@ describe('The home page', ()=>{
 })
 
 describe('CreateForm', ()=>{
+    afterEach(()=>{
+        wrapper.unmount();
+    })
     it('can display form to create a stream', (done)=>{
         wrapper.find('.create-stream').at(0).simulate('click',  { button: 0 });
         wrapper.update();
@@ -53,20 +54,24 @@ describe('CreateForm', ()=>{
     })
 })
 
-// describe('StreamShow', ()=>{
-//     it("can display fetch a specific streams when you click on the stream's link tag", (done)=>{
-//         moxios.install();
-//         moxios.stubRequest('/api/streams/5c245be47ce56d21479e6eca', {
-//             status: 200,
-//             response: streams['5c245be47ce56d21479e6eca']
-//         })
-//         wrapper.find('.header').at(0).simulate('click',  { button: 0 });
-//         moxios.wait(()=> {
-//             wrapper.update();
-//             expect(wrapper.containsMatchingElement(<video/>)).toBeTruthy();
-//             done();
-//             moxios.uninstall();
-//         })    
-//     })
-// })
+describe('StreamShow', ()=>{
+    afterEach(()=>{
+        wrapper.unmount();
+    })
+    it("can display fetch a specific streams when you click on the stream's link tag", (done)=>{
+        moxios.install();
+        moxios.stubRequest('/api/streams/5c245be47ce56d21479e6eca', {
+            status: 200,
+            response: streams['5c245be47ce56d21479e6eca']
+        })
+        wrapper.find('.home').at(0).simulate('click',  { button: 0 });
+        wrapper.find('.header').at(0).simulate('click',  { button: 0 });
+        moxios.wait(()=> {
+            wrapper.update();
+            expect(wrapper.containsMatchingElement(<video/>)).toBeTruthy();
+            done();
+            moxios.uninstall();
+        })    
+    })
+})
 

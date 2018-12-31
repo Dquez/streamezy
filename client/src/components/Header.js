@@ -4,11 +4,11 @@ import GoogleAuth from './GoogleAuth';
 export default () =>{
     return (
         <div className='ui secondary pointing menu'>
-            <Link to='/' className='item'>
-                Streaming App
+            <Link to='/' className='item home'>
+                Streamezy
             </Link>
             <div className='right menu'>
-            <Link to='/' className='item'>
+            <Link to='/' className='item home'>
                 All Streams
             </Link>
             <GoogleAuth/>
