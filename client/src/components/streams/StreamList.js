@@ -38,7 +38,7 @@ class StreamList extends Component{
         if(this.props.isSignedIn){
             return (
                 <div style={{textAlign: 'right'}}>
-                    <Link to="/stream/new" className="ui button primary">Create Stream</Link>
+                    <Link to="/stream/new" className="ui button primary create-stream">Create Stream</Link>
                 </div>  
             )
         }
