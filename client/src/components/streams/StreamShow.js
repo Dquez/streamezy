@@ -14,7 +14,8 @@ class StreamShow extends Component{
         try {
             this.buildPlayer();    
         } catch (error) { 
-            console.log(error);
+            // console.log(error);
+            // this error will log during testing
         }
         
     }
