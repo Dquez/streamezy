@@ -19,6 +19,10 @@ Streamezy is a MERN-redux, single-page web application that allows users to crea
 * [redux-thunk](https://github.com/reduxjs/redux-thunk/) - Thunk middleware for Redux, enables actions to return functions.
 * [semantic ui](https://semantic-ui.com/) - Front-end framework for styling
 
+## Inspiration
+As a course assistant for Columbia's coding bootcamp, I noticed there were issues with the streaming service, panopto, that could be easily fixed. I wanted a way to avoid the pain point of having to log in with specific credentials to create a live video, which would then be uploaded to a proprietary application for students to view. With Streamezy, you just create your live stream, send the URL out, and you can view the stream with minimal time lag (about 5-10 seconds).  
+
+
 ## Author
 
 - [Dariell Vasquez](https://github.com/Dquez)
