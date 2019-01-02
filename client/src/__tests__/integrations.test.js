@@ -1,5 +1,6 @@
 import React from 'react';
 import {mount} from 'enzyme';
+import {Field} from 'redux-form';
 import Root from '../Root';
 import App from '../components/App';
 import StreamForm from '../components/streams/StreamForm';
@@ -32,20 +33,18 @@ beforeEach(()=>{
     )
 });
 
-describe('The home page', ()=>{
-    afterEach(()=>{
-        wrapper.unmount();
-    })
+afterEach(()=>{
+    wrapper.unmount();
+})
+
+describe('StreamList', ()=>{
     it('can display a list of streams from redux store', (done)=>{
         expect(wrapper.find('.celled').children().some('.stream')).toBeTruthy();
         done();
     })
 })
 
-describe('CreateForm', ()=>{
-    afterEach(()=>{
-        wrapper.unmount();
-    })
+describe('StreamCreate', ()=>{
     it('can display form to create a stream', (done)=>{
         wrapper.find('.create-stream').at(0).simulate('click',  { button: 0 });
         wrapper.update();
@@ -55,9 +54,6 @@ describe('CreateForm', ()=>{
 })
 
 describe('StreamShow', ()=>{
-    afterEach(()=>{
-        wrapper.unmount();
-    })
     it("can display fetch a specific streams when you click on the stream's link tag", (done)=>{
         moxios.install();
         moxios.stubRequest('/api/streams/5c245be47ce56d21479e6eca', {
@@ -69,9 +65,39 @@ describe('StreamShow', ()=>{
         moxios.wait(()=> {
             wrapper.update();
             expect(wrapper.containsMatchingElement(<video/>)).toBeTruthy();
-            done();
             moxios.uninstall();
+            done();
         })    
     })
 })
 
+describe('StreamEdit', ()=>{
+    it("can display a form to edit a specific stream when you click on the edit button", (done)=>{
+        wrapper.find('.home').at(0).simulate('click',  { button: 0 });
+        wrapper.find('.edit-stream').at(0).simulate('click',  { button: 0 });
+        expect(wrapper.containsMatchingElement(<StreamForm/>)).toBeTruthy();
+        let editedStream = streams['5c245be47ce56d21479e6eca'];
+        editedStream.description = 'edited Stream';
+        moxios.install();
+        moxios.stubRequest('/api/streams/5c245be47ce56d21479e6eca', {
+            status: 200,
+            response: editedStream
+        })
+        wrapper.find('input#title').simulate('change', {
+            target: { value: 'Stream test' }
+        })
+        wrapper.find('input#description').simulate('change', {
+            target: { value: 'edited Stream' }
+        })
+        // console.log(wrapper.debug());
+        wrapper.find('.form').simulate('submit');
+        moxios.wait(()=> {
+            // wrapper.find('.home').at(0).simulate('click',  { button: 0 });
+            wrapper.update();
+            console.log(wrapper.debug());
+            expect(wrapper.find('.description').text()).toEqual('edited Stream');
+            moxios.uninstall();
+            done();
+        })    
+    })
+})

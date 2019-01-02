@@ -17,7 +17,8 @@ class GoogleAuth extends Component{
                 })
             })
         } catch (error) {
-            console.log(error);
+            // console.log(error);
+            // TypeError: Cannot read property 'load' of undefined will log during testing
         }
 
     }

@@ -17,7 +17,7 @@ class StreamForm extends Component{
         return (
             <div className={className}>
                 <label>{label}</label>
-                <input {...input}/>
+                <input id={input.name} {...input}/>
                 {this.renderError(meta)}
             </div>
         ) 
@@ -34,7 +34,7 @@ class StreamForm extends Component{
             className="ui form error">
                 <Field name='title' component={this.renderInput} label="Enter Title"/>
                 <Field name='description'  component={this.renderInput} label="Enter Description"/>
-                <button className="ui button primary">Submit</button>
+                <button id='submit' className="ui button primary">Submit</button>
             </form>
             
         )
