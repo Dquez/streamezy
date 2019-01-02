@@ -1,6 +1,5 @@
 import React from 'react';
 import {mount} from 'enzyme';
-import {Field} from 'redux-form';
 import Root from '../Root';
 import App from '../components/App';
 import StreamForm from '../components/streams/StreamForm';
@@ -77,33 +76,32 @@ describe('StreamEdit', ()=>{
         wrapper.find('.edit-stream').at(0).simulate('click',  { button: 0 });
         expect(wrapper.containsMatchingElement(<StreamForm/>)).toBeTruthy();   
     })
-    it('can update the form inputs when a user types in the respective Field components', ()=>{
-
+    it('can update the form inputs and stream in the redux store/DB and display the updated stream once redirected', (done) =>{
         wrapper.find('input#title').simulate('change', {
-            target: { value: 'Stream test' }
+            target: { value: 'Test' }
         })
         wrapper.find('input#description').simulate('change', {
             target: { value: 'edited Stream' }
         })
-        console.log(wrapper.debug());
-        expect(wrapper.find('input#title').props().value).toEqual('Stream test')
+        expect(wrapper.find('input#title').props().value).toEqual('Test')
         expect(wrapper.find('input#description').props().value).toEqual('edited Stream')
-
+        // mocking the patched stream that would be sent back from the server
+        let editedStream = {...streams['5c245be47ce56d21479e6eca']};
+        editedStream.title = 'Test';
+        editedStream.description = 'edited Stream';
+        
+        moxios.install();
+        moxios.stubRequest('/api/streams/5c245be47ce56d21479e6eca', {
+            status: 200,
+            response: 'dasdsa'
+        })
+        wrapper.find('.form').simulate('submit');
+        moxios.wait(()=> {
+            wrapper.update();
+            expect(wrapper.find('.header').at(1).text()).toEqual('Test');
+            expect(wrapper.find('.description').text()).toEqual('edited Stream');
+            moxios.uninstall();
+            done();
+        }) 
     })
-    // it('can update the stream in the redux store/DB and display the updated stream once redirected', (done) =>{
-    //     let editedStream = {...streams['5c245be47ce56d21479e6eca']};
-    //     editedStream.description = 'edited Stream';
-    //     moxios.install();
-    //     moxios.stubRequest('/api/streams/5c245be47ce56d21479e6eca', {
-    //         status: 200,
-    //         response: editedStream
-    //     })
-    //     wrapper.find('.form').simulate('submit');
-    //     moxios.wait(()=> {
-    //         wrapper.update();
-    //         expect(wrapper.find('.description').text()).toEqual('edited Stream');
-    //         moxios.uninstall();
-    //         done();
-    //     }) 
-    // })
 })
