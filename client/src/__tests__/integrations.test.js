@@ -3,6 +3,7 @@ import {mount} from 'enzyme';
 import Root from '../Root';
 import App from '../components/App';
 import StreamForm from '../components/streams/StreamForm';
+import Modal from '../components/Modal';
 import _ from 'lodash';
 import moxios from 'moxios';
 
@@ -81,27 +82,63 @@ describe('StreamEdit', ()=>{
             target: { value: 'Test' }
         })
         wrapper.find('input#description').simulate('change', {
-            target: { value: 'edited Stream' }
+            target: { value: 'edited' }
         })
         expect(wrapper.find('input#title').props().value).toEqual('Test')
-        expect(wrapper.find('input#description').props().value).toEqual('edited Stream')
+        expect(wrapper.find('input#description').props().value).toEqual('edited')
         // mocking the patched stream that would be sent back from the server
         let editedStream = {...streams['5c245be47ce56d21479e6eca']};
         editedStream.title = 'Test';
-        editedStream.description = 'edited Stream';
+        editedStream.description = 'edited';
         
         moxios.install();
         moxios.stubRequest('/api/streams/5c245be47ce56d21479e6eca', {
             status: 200,
-            response: 'dasdsa'
+            response: editedStream
         })
         wrapper.find('.form').simulate('submit');
         moxios.wait(()=> {
             wrapper.update();
             expect(wrapper.find('.header').at(1).text()).toEqual('Test');
-            expect(wrapper.find('.description').text()).toEqual('edited Stream');
+            expect(wrapper.find('.description').text()).toEqual('edited');
             moxios.uninstall();
             done();
         }) 
     })
+})
+
+describe('StreamDelete', ()=>{
+    it("can display a modal to delete a specific stream when you click on the delete button", ()=>{
+        wrapper.find('.home').at(0).simulate('click',  { button: 0 });
+        wrapper.find('.delete-stream').at(0).simulate('click',  { button: 0 });
+        expect(wrapper.containsMatchingElement(<Modal/>)).toBeTruthy();   
+    })
+    // it('can update the form inputs and stream in the redux store/DB and display the updated stream once redirected', (done) =>{
+    //     wrapper.find('input#title').simulate('change', {
+    //         target: { value: 'Test' }
+    //     })
+    //     wrapper.find('input#description').simulate('change', {
+    //         target: { value: 'edited' }
+    //     })
+    //     expect(wrapper.find('input#title').props().value).toEqual('Test')
+    //     expect(wrapper.find('input#description').props().value).toEqual('edited')
+    //     // mocking the patched stream that would be sent back from the server
+    //     let editedStream = {...streams['5c245be47ce56d21479e6eca']};
+    //     editedStream.title = 'Test';
+    //     editedStream.description = 'edited';
+        
+    //     moxios.install();
+    //     moxios.stubRequest('/api/streams/5c245be47ce56d21479e6eca', {
+    //         status: 200,
+    //         response: editedStream
+    //     })
+    //     wrapper.find('.form').simulate('submit');
+    //     moxios.wait(()=> {
+    //         wrapper.update();
+    //         expect(wrapper.find('.header').at(1).text()).toEqual('Test');
+    //         expect(wrapper.find('.description').text()).toEqual('edited');
+    //         moxios.uninstall();
+    //         done();
+    //     }) 
+    // })
 })

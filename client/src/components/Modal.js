@@ -16,7 +16,7 @@ const Modal = props =>{
                 <div className='actions'>{actions}</div>
             </div>
         </div>,
-        document.getElementById('modal')
+        document.getElementById('modal')  || document.createElement('div') // testing purposes
     )
 }
 export default Modal;
