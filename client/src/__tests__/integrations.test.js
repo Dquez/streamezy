@@ -131,6 +131,10 @@ describe('StreamEdit', ()=>{
     // })
 })
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8aacc985c545d6f9ed0438548d03b084349d02af
 // describe('StreamDelete', ()=>{
 //     it("can display a modal to delete a specific stream when you click on the delete button from the homepage", ()=>{
 //         wrapper.find('.home').at(0).simulate('click',  { button: 0 });
