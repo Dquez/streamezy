@@ -3,10 +3,11 @@ import {mount} from 'enzyme';
 import Root from '../Root';
 import App from '../components/App';
 import StreamForm from '../components/streams/StreamForm';
+import StreamList from '../components/streams/StreamList';
+
 import Modal from '../components/Modal';
 import _ from 'lodash';
 import moxios from 'moxios';
-import axios from 'axios';
 
 let wrapper;
 let streams;
@@ -50,6 +51,18 @@ describe('StreamCreate', ()=>{
         wrapper.update();
         expect(wrapper.containsMatchingElement(<StreamForm/>)).toBeTruthy();
     })
+    it('can create a stream', ()=>{
+        wrapper.find('input#title').simulate('change', {
+            target: { value: 'Newly created stream' }
+        })
+        wrapper.find('input#description').simulate('change', {
+            target: { value: 'my new stream' }
+        })
+        expect(wrapper.find('input#title').props().value).toEqual('Newly created stream')
+        expect(wrapper.find('input#description').props().value).toEqual('my new stream');
+        wrapper.find('.form').simulate('submit');
+        // this will update DB 
+    })
 })
 
 describe('StreamShow', ()=>{
@@ -88,7 +101,7 @@ describe('StreamEdit', ()=>{
         moxios.wait(()=> {
             wrapper.find('.home').at(0).simulate('click',  { button: 0 });
             expect(wrapper.find('.header').at(1).text()).toEqual('Edited');
-            expect(wrapper.find('.description').text()).toEqual('new stream');
+            expect(wrapper.find('.description').at(0).text()).toEqual('new stream');
             done();
         }) 
     })
