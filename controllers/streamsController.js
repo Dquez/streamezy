@@ -5,7 +5,7 @@ const db = require("../models");
 // Cors setup
 const cors = require('cors');
 const corsOptions = {
-  origin: 'http://localhost',
+  origin: 'http://localhost:3000',
   optionsSuccessStatus: 200
 }
 router.use(cors());
