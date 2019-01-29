@@ -1,0 +1,9 @@
+sudo: requied
+services:
+  - docker
+
+before_install:
+  - docker build -t dquez/client-test -f ./client/Dockerfile.dev ./client
+
+script: 
+  - docker run dquez/client-test npm test -- --coverage
