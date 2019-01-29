@@ -52,7 +52,7 @@ describe('StreamCreate', ()=>{
 })
 
 describe('StreamShow', ()=>{
-    it("can display fetch a specific stream when you click on the stream's link tag", (done)=>{
+    it("can display a specific stream when you click on the stream's link tag", (done)=>{
         wrapper.find('.home').at(0).simulate('click',  { button: 0 });
         wrapper.find('.header').at(0).simulate('click',  { button: 0 });
         moxios.wait(()=> {
