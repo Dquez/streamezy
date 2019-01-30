@@ -7,7 +7,6 @@ const bodyParser = require("body-parser");
 const streamsController = require("./controllers/streamsController");
 
 // Configure body parser for AJAX requests
-// app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json({ type: '*/*' }));
 
