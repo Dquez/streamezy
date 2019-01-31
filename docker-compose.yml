@@ -19,6 +19,8 @@ services:
     volumes:
       - /app/node_modules
       - ./server:/app 
+    env_file:
+      - ./server/.env 
   client:
     build:
       dockerfile: Dockerfile.dev

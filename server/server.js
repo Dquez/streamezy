@@ -2,7 +2,7 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3001;
 const bodyParser = require("body-parser");
 const streamsController = require("./controllers/streamsController");
 
