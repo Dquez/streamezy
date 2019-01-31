@@ -4,8 +4,8 @@ import Root from '../Root';
 import App from '../components/App';
 import StreamForm from '../components/streams/StreamForm';
 import Modal from '../components/Modal';
-import _ from 'lodash';
-import moxios from 'moxios';
+// import _ from 'lodash';
+// import moxios from 'moxios';
 
 let wrapper;
 let streams;
