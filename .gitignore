@@ -3,4 +3,5 @@ client/node_modules
 yarn.lock
 client/yarn.lock
 client/package-lock.json
+./server/.env
 .DS_Store
