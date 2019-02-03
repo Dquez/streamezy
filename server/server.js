@@ -2,12 +2,11 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3001;
 const bodyParser = require("body-parser");
 const streamsController = require("./controllers/streamsController");
 
 // Configure body parser for AJAX requests
-// app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json({ type: '*/*' }));
 
