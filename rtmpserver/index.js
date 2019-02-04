@@ -9,7 +9,7 @@ const config = {
     ping_timeout: 30
   },
   http: {
-    port: 8080,
+    port: 8000,
     allow_origin: '*'
   }
 };

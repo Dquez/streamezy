@@ -7,7 +7,6 @@ services:
       context: ./nginx
     ports:
       - '8080:80'
-      - '1935:1935'
   mongodb:
     image: 'mongo:latest'
     ports:
@@ -33,3 +32,7 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./rtmpserver
+    ports:
+      - '1935:1935'
+      - '8000:8000'
+        
