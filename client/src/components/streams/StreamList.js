@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {fetchStreams} from '../../actions';
 import {Link} from 'react-router-dom';
+import './StreamList.css';
 
 class StreamList extends Component{
     componentDidMount(){
@@ -22,7 +23,6 @@ class StreamList extends Component{
         return this.props.streams.map(stream =>{
             return(
                 <div className="item stream" key={stream._id}>
-                    {this.renderAdminButtons(stream)}
                     <i className="large middle aligned icon camera" />
                     <div className="content">
                         <Link to={`/stream/${stream._id}`} className='header'>{stream.title}</Link>
@@ -30,6 +30,7 @@ class StreamList extends Component{
                     <div className="description">
                         {stream.description}
                     </div>
+                    {this.renderAdminButtons(stream)}
                 </div>
             )
         })
@@ -37,7 +38,7 @@ class StreamList extends Component{
     renderCreateButton = () => {
         if(this.props.isSignedIn){
             return (
-                <div style={{textAlign: 'right'}}>
+                <div className='create-stream' style={{textAlign: 'right'}}>
                     <Link to="/stream/new" className="ui button primary create-stream">Create Stream</Link>
                 </div>  
             )
@@ -45,13 +46,17 @@ class StreamList extends Component{
     }
     render(){
         return(
-            <React.Fragment>
+            <>
+                <div className='header-area'>
                 <h2>Streams</h2>
-                <div className="ui celled list">
-                {this.renderList()}
                 {this.renderCreateButton()}
                 </div>
-            </React.Fragment>
+                
+                
+                <div className="ui celled List">
+                {this.renderList()}
+                </div>
+            </>
         )
     }
 }

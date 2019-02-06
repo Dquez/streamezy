@@ -1,0 +1,14 @@
+.List{
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+}
+
+.List:nth-child(1){
+    margin-left: 2em;
+}
+
+.header-area {
+    display:grid;
+    grid-template-columns: 75% 25%;
+}
