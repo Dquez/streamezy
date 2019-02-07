@@ -46,7 +46,7 @@ class StreamList extends Component{
     }
     render(){
         return(
-            <>
+            <div className='StreamList'>
                 <div className='header-area'>
                 <h2>Streams</h2>
                 {this.renderCreateButton()}
@@ -56,7 +56,7 @@ class StreamList extends Component{
                 <div className="ui celled List">
                 {this.renderList()}
                 </div>
-            </>
+            </div>
         )
     }
 }

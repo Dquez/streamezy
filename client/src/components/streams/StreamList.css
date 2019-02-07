@@ -8,11 +8,19 @@
     margin-left: 2em;
 }
 
+.ui.menu {
+    margin: 0;
+}
+
 .header-area {
     display:grid;
     grid-template-columns: 75% 25%;
 }
 
-/* .StreamList {
+.StreamList {
+    height: 100%;
     background-image: url('../assets/images/home-background.jpg');
-} */
+    background-size: cover;
+    background-position: center;
+    
+}

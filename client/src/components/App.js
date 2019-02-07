@@ -3,7 +3,7 @@ import history from '../history';
 import {Router, Route, Switch} from 'react-router-dom'
 import {StreamList, StreamCreate, StreamEdit, StreamDelete, StreamShow} from './streams';
 import Header from './Header';
-// import './App.css'
+import './App.css'
 export default () =>{
     return (
             <Router history={history}>
