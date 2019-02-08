@@ -1,10 +1,26 @@
-.List{
+.StreamList {
+    height: 100%;
+    background-image: url('../assets/images/home-background.jpg');
+    background-size: cover;
+    background-position: center;
+    
+}
+
+/* .List{
     display: grid;
     grid-template-columns: 20% 20% 20% 20% 20%;
     grid-template-rows: 20% 20% 20% 20% 20%;
+} */
+
+.ui.cards {
+    margin-left: 2em;
 }
 
-.List:nth-child(1){
+.List:nth-child(6n){
+    margin-left: 2em;
+}
+
+#List:first-child {
     margin-left: 2em;
 }
 
@@ -17,10 +33,3 @@
     grid-template-columns: 75% 25%;
 }
 
-.StreamList {
-    height: 100%;
-    background-image: url('../assets/images/home-background.jpg');
-    background-size: cover;
-    background-position: center;
-    
-}

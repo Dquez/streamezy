@@ -22,15 +22,20 @@ class StreamList extends Component{
     renderList = () =>{
         return this.props.streams.map(stream =>{
             return(
-                <div className="item stream" key={stream._id}>
-                    <i className="large middle aligned icon camera" />
+                <div className="item stream ui card" key={stream._id}>
+                    <div className="image">
+                    <img src="https://via.placeholder.com/200.png?text=Placeholder" alt='placeholder'/>
+                    </div>
                     <div className="content">
                         <Link to={`/stream/${stream._id}`} className='header'>{stream.title}</Link>
                     </div>
                     <div className="description">
                         {stream.description}
                     </div>
-                    {this.renderAdminButtons(stream)}
+                    <div className="extra content">
+                        {this.renderAdminButtons(stream)}
+                    </div>
+                    
                 </div>
             )
         })
@@ -51,9 +56,7 @@ class StreamList extends Component{
                 <h2>Streams</h2>
                 {this.renderCreateButton()}
                 </div>
-                
-                
-                <div className="ui celled List">
+                <div className="ui cards List" id='List'>
                 {this.renderList()}
                 </div>
             </div>
