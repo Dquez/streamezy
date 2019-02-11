@@ -1,0 +1,39 @@
+.StreamList {
+    height: 100%;
+    background-image: url('../images/home-background.jpg');
+    background-size: cover;
+    background-position: center;
+    overflow:auto;
+}
+
+.ui.cards {
+    margin-left: 2em;
+}
+
+.List:nth-child(6n){
+    margin-left: 2em;
+}
+
+#List:first-child {
+    margin-left: 2em;
+}
+
+.ui.menu {
+    margin: 0;
+}
+
+.header-area {
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+    
+}
+
+.header-area > h2 {
+    color: white;
+}
+
+.ui.card>.content, .ui.cards>.card>.content, .description {
+    background-color: #CAE9FF;
+}
+

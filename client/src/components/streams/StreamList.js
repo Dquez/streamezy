@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {fetchStreams} from '../../actions';
 import {Link} from 'react-router-dom';
+import '../assets/css/StreamList.css';
 
 class StreamList extends Component{
     componentDidMount(){
@@ -21,15 +22,20 @@ class StreamList extends Component{
     renderList = () =>{
         return this.props.streams.map(stream =>{
             return(
-                <div className="item stream" key={stream._id}>
-                    {this.renderAdminButtons(stream)}
-                    <i className="large middle aligned icon camera" />
+                <div className="item stream ui card" key={stream._id}>
+                    <div className="image">
+                    <img src="https://via.placeholder.com/400.png?text=Placeholder" alt='placeholder'/>
+                    </div>
                     <div className="content">
                         <Link to={`/stream/${stream._id}`} className='header'>{stream.title}</Link>
                     </div>
                     <div className="description">
                         {stream.description}
                     </div>
+                    <div className="extra content">
+                        {this.renderAdminButtons(stream)}
+                    </div>
+                    
                 </div>
             )
         })
@@ -37,7 +43,7 @@ class StreamList extends Component{
     renderCreateButton = () => {
         if(this.props.isSignedIn){
             return (
-                <div style={{textAlign: 'right'}}>
+                <div className='create-stream'>
                     <Link to="/stream/new" className="ui button primary create-stream">Create Stream</Link>
                 </div>  
             )
@@ -45,13 +51,15 @@ class StreamList extends Component{
     }
     render(){
         return(
-            <React.Fragment>
-                <h2>Streams</h2>
-                <div className="ui celled list">
-                {this.renderList()}
+            <div className='StreamList'>
+                <div className='header-area'>
+                <h2>Current Streams</h2>
                 {this.renderCreateButton()}
                 </div>
-            </React.Fragment>
+                <div className="ui cards List" id='List'>
+                {this.renderList()}
+                </div>
+            </div>
         )
     }
 }
