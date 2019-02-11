@@ -3,14 +3,8 @@
     background-image: url('../assets/images/home-background.jpg');
     background-size: cover;
     background-position: center;
-    
+    overflow:auto;
 }
-
-/* .List{
-    display: grid;
-    grid-template-columns: 20% 20% 20% 20% 20%;
-    grid-template-rows: 20% 20% 20% 20% 20%;
-} */
 
 .ui.cards {
     margin-left: 2em;
@@ -29,7 +23,17 @@
 }
 
 .header-area {
-    display:grid;
-    grid-template-columns: 75% 25%;
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+    
+}
+
+.header-area > h2 {
+    color: white;
+}
+
+.ui.card>.content, .ui.cards>.card>.content, .description {
+    background-color: #CAE9FF;
 }
 
