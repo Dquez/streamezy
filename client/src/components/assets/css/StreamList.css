@@ -1,6 +1,6 @@
 .StreamList {
     height: 100%;
-    background-image: url('../assets/images/home-background.jpg');
+    background-image: url('../images/home-background.jpg');
     background-size: cover;
     background-position: center;
     overflow:auto;
