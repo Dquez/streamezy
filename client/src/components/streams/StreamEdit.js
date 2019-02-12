@@ -6,6 +6,8 @@ import StreamForm from './StreamForm'
 import Modal from '../Modal';
 import {Link} from 'react-router-dom';
 import history from '../../history';
+import '../assets/css/StreamEdit.css';
+
 class StreamEdit extends Component{
     state = { streamId : this.props.match.params.id}
     componentDidMount(){
@@ -26,7 +28,11 @@ class StreamEdit extends Component{
     render(){
         const {stream} = this.props;
         if(!stream){
-            return <> Loading...</>
+            return  (
+                <div className='donut-parent'>
+                    <div className='donut'></div> 
+                </div>
+            )
         }
         return (
             <div className='StreamEdit'>
