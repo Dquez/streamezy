@@ -37,14 +37,10 @@ class GoogleAuth extends Component{
             isSignedIn === null ? <GoogleButton onClick={()=>this.signIn()} text="Google Auth"/> :
             isSignedIn ?   <GoogleButton onClick={()=>this.signOut()} text="Log out"/> : 
             <GoogleButton onClick={()=>this.signIn()} text="Log in"/>
-        )
-        
+        ) 
     }
     render(){
-        return(
-            <React.Fragment>{this.renderAuth()}</React.Fragment>
-            
-        )
+        return this.renderAuth();
     }
 }
 

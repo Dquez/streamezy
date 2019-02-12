@@ -17,12 +17,12 @@ class StreamDelete extends Component{
     }
     renderActions = () =>{
         return (
-            <React.Fragment>
+            <>
                 <button onClick={this.deleteStream} className='ui button negative'>
                     Delete
                 </button>
                 <Link to='/' className='ui button'>Cancel</Link>
-            </React.Fragment>
+            </>
         )
     }
     renderContent = () =>{
