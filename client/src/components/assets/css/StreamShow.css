@@ -1,0 +1,14 @@
+.StreamShow {
+    height:100%;
+    display:grid;
+    grid-template: repeat(5, 20%)/ repeat(5, 20%);
+}
+
+#video {
+    width: 100%;
+    grid-area: 2/2/-1/-1;
+}
+
+/* .content , .descripton {
+    justify-self: space-around;
+} */

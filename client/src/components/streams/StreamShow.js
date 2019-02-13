@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import flv from 'flv.js';
 import {connect} from 'react-redux';
 import {fetchStream} from '../../actions';
-
+import '../assets/css/StreamShow.css';
 class StreamShow extends Component{
     constructor(props){
         super(props);
@@ -47,12 +47,12 @@ class StreamShow extends Component{
             return <>Loading stream...</>
         }
         return (
-            <div className="item video StreamShow">
-                    <video ref={this.videoRef} style={{width: '70%'}} controls/>
+            <div className="item StreamShow">
+                    <video className='video' id='video' ref={this.videoRef} style={{width: '70%'}} controls/>
                     <div className="content">
                         {stream.title}
                     </div>
-                    <div className="">
+                    <div className="description">
                         {stream.description}
                     </div>
             </div>
