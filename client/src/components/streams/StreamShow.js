@@ -42,17 +42,17 @@ class StreamShow extends Component{
 
     }
     renderStream = () =>{
-        if(!this.props.stream){
+        const {stream} = this.props;
+        if(!stream){
             return <>Loading stream...</>
         }
-        const {stream} = this.props;
         return (
-            <div className="item video">
+            <div className="item video StreamShow">
                     <video ref={this.videoRef} style={{width: '70%'}} controls/>
                     <div className="content">
                         {stream.title}
                     </div>
-                    <div className="description">
+                    <div className="">
                         {stream.description}
                     </div>
             </div>
