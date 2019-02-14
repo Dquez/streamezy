@@ -3,6 +3,7 @@
     display:grid;
     grid-template: repeat(10, 10%)/ repeat(10, 10%);
     justify-items: center;
+    background-color: #CAE9FF;
 }
 
 .video {
@@ -19,7 +20,6 @@
 
 .StreamShow > .description{
     grid-area: 1/5/1/7;
-    background: white;
     align-self: center;
     justify-content: space-around;
 }
