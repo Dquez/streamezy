@@ -10,12 +10,8 @@
     margin-left: 2em;
 }
 
-.List:nth-child(6n){
-    margin-left: 2em;
-}
-
-#List:first-child {
-    margin-left: 2em;
+.ui.card > .description {
+    padding-left: 1em;
 }
 
 .ui.menu {

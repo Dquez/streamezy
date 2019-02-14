@@ -2,6 +2,7 @@
 
 Streamezy is a MERN-redux, single-page web application that allows users to create, read, update and delete their streams. It's a lightweight alternative to streaming services such as twitch.tv and panopto to host your live stream to an audience.
 
+[![Streamezy Thumbnail](https://res.cloudinary.com/dquez/image/upload/v1550112111/Streamezy_y0iwuw.png)](https://youtu.be/wfCMtPluhVY)
 
 ## Built With
 
