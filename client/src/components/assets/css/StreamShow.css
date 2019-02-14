@@ -1,14 +1,51 @@
 .StreamShow {
     height:100%;
     display:grid;
-    grid-template: repeat(5, 20%)/ repeat(5, 20%);
+    grid-template: repeat(10, 10%)/ repeat(10, 10%);
+    justify-items: center;
 }
 
-#video {
-    width: 100%;
-    grid-area: 2/2/-1/-1;
+.video {
+    height:70%;
+    grid-area: 2/3/-1/-1;
+    justify-self: flex-start;
 }
 
-/* .content , .descripton {
-    justify-self: space-around;
-} */
+.StreamShow > .content{
+    grid-area: 1/3/1/5;
+    align-self: center;
+    justify-content: center;
+}
+
+.StreamShow > .description{
+    grid-area: 1/5/1/7;
+    background: white;
+    align-self: center;
+    justify-content: space-around;
+}
+
+@keyframes donut-spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+.donut-parent {
+    display:grid;
+    height: 100%;
+    grid-template: repeat(5, 20%) / repeat(5, 20%);
+
+}
+
+.donut {
+    grid-area: 2/3/2/3;
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #1B4965;
+    border-radius: 50%;
+    width: 160px;
+    height: 160px;
+    animation: donut-spin 1.2s linear infinite;
+}
+
