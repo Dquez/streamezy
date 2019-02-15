@@ -9,10 +9,10 @@ Streamezy is a MERN-redux, single-page web application that allows users to crea
 * *in a new terminal window* `mongo`
 
 
-* With Docker
+**With Docker**
 `docker-compose up --build`
 
-* Without Docker
+**Without Docker**
 * *in a new terminal window* `cd server` `npm start`
 * *in a new terminal window* `cd client` `npm start`
 * *in a new terminal window* `cd rtmp` `npm start`
@@ -36,8 +36,7 @@ Streamezy is a MERN-redux, single-page web application that allows users to crea
 * [travis-ci](https://travis-ci.org) - Travis CI is a hosted, distributed continuous integration service used to build and test software projects hosted at GitHub.
 
 ## Caveats
-In order for your OBS to connect to your rtmp server
-`settings > Stream >` *In the url section insert* `rtmp://localhost/live` > *In the stream key section* ID of created stream *this will be in the URL address once you've created a stream and visited the stream's page*
+In order for your OBS to connect to your rtmp server, go to `settings > Stream >` then, in the url section insert `rtmp://localhost/live`. In the stream key section, insert `ID of created stream` *this will be in the URL address once you've created a stream and visited the stream's page*
 
 
 ## Inspiration
