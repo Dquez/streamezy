@@ -5,30 +5,17 @@ Streamezy is a MERN-redux, single-page web application that allows users to crea
 [![Streamezy Thumbnail](https://res.cloudinary.com/dquez/image/upload/v1550112111/Streamezy_y0iwuw.png)](https://youtu.be/wfCMtPluhVY)
 
 ## Getting Started
-*Assuming you have MongoDB installed*
-mongod
-*in a new terminal window*
-mongo
+**Assuming you have MongoDB installed** `mongod`
+* *in a new terminal window* `mongo`
 
 
 * With Docker
-`
-docker-compose up --build
-`
+`docker-compose up --build`
+
 * Without Docker
-`
-*in a new terminal window*
-cd server 
-npm start
-
-*in a new terminal window*
-cd client
-npm start
-
-*in a new terminal window*
-cd rtmp
-npm start
-`
+* *in a new terminal window* `cd server` `npm start`
+* *in a new terminal window* `cd client` `npm start`
+* *in a new terminal window* `cd rtmp` `npm start`
 
 ## Built With
 
