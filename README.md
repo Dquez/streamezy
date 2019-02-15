@@ -37,7 +37,7 @@ Streamezy is a MERN-redux, single-page web application that allows users to crea
 
 ## Caveats
 In order for your OBS to connect to your rtmp server
-` settings > Stream > *In the url section insert * rtmp://localhost/live > *In the stream key section* ID of created stream *this will be in the URL address once you've created a stream and visited the stream's page*
+`settings > Stream >` *In the url section insert* `rtmp://localhost/live` > *In the stream key section* ID of created stream *this will be in the URL address once you've created a stream and visited the stream's page*
 
 
 ## Inspiration
