@@ -63,31 +63,29 @@ describe('StreamShow', ()=>{
 })
 
 
-// describe('StreamEdit', ()=>{
-//     it("can display a form to edit a specific stream when you click on the edit button", ()=>{
-//         wrapper.find('.home').at(0).simulate('click',  { button: 0 });
-//         wrapper.find('.edit-stream').at(0).simulate('click',  { button: 0 });
-//         expect(wrapper.containsMatchingElement(<StreamForm/>)).toBeTruthy();   
-//     })
-//     it('can update the form inputs and streams in redux store once form is submitted', (done) =>{
-//         wrapper.find('input#title').simulate('change', {
-//             target: { value: 'Edited' }
-//         })
-//         wrapper.find('input#description').simulate('change', {
-//             target: { value: 'new stream' }
-//         })
-//         console.log(wrapper.debug());
-//         // expect(wrapper.find('input#title').props().value).toEqual('Edited')
-//         // expect(wrapper.find('input#description').props().value).toEqual('new stream');
-//         // wrapper.find('.form').simulate('submit');
-//         // moxios.wait(()=> {
-//         //     wrapper.find('.home').at(0).simulate('click',  { button: 0 });
-//         //     expect(wrapper.find('.header').at(1).text()).toEqual('Edited');
-//         //     expect(wrapper.find('.description').at(0).text()).toEqual('new stream');
-//             done();
-//         // }) 
-//     })
-// })
+describe('StreamEdit', ()=>{
+    it("can display a form to edit a specific stream when you click on the edit button", ()=>{
+        wrapper.find('.home').at(0).simulate('click',  { button: 0 });
+        wrapper.find('.edit-stream').at(0).simulate('click',  { button: 0 });
+        expect(wrapper.containsMatchingElement(<StreamForm/>)).toBeTruthy();   
+    })
+    it('can update the form inputs and streams in redux store once form is submitted', () =>{
+        wrapper.find('input#title').simulate('change', {
+            target: { value: 'Edited' }
+        })
+        wrapper.find('input#description').simulate('change', {
+            target: { value: 'new stream' }
+        })
+        streams['5c4651cb635e6ef3a1690b5c'].title = 'Edited';
+        streams['5c4651cb635e6ef3a1690b5c'].description = 'new stream';
+        expect(wrapper.find('input#title').props().value).toEqual('Edited')
+        expect(wrapper.find('input#description').props().value).toEqual('new stream');
+        wrapper.find('.form').simulate('submit');
+        wrapper.find('.home').at(0).simulate('click',  { button: 0 });
+        expect(wrapper.find('.header').at(1).text()).toEqual('Edited');
+        expect(wrapper.find('.description').at(0).text()).toEqual('new stream');
+    })
+})
 
 describe('StreamDelete', ()=>{
     it("can display a modal to delete a specific stream when you click on the delete button from the homepage", ()=>{
