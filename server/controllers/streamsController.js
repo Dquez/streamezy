@@ -3,14 +3,11 @@ const router = require("express").Router();
 const db = require("../models");
 
 // Cors setup
+
 const cors = require('cors');
-const whitelist = [ 'http://localhost:8080/', 'https://streamezy.herokuapp.com']
-const corsOptionsDelegate = function ({headers}, callback) {
-    const origin = headers.referer;
-    // if the origin is coming from postman, disable cors
-    if(headers.hasOwnProperty(['postman-token'])) return callback(null, true);
-    // if the origin is coming from our client application, disable cors, otherwise block the request
-    whitelist.indexOf(origin) > -1 ? callback(null, true) : callback(new Error('Not allowed by CORS'));
+const corsOptions = {
+  origin: [ 'http://localhost:8080/', 'https://streamezy.herokuapp.com'],
+  optionsSuccessStatus: 200
 }
 
 const streamFunctions = {
@@ -48,15 +45,15 @@ const streamFunctions = {
   }
 }
 
-router.post("/api/streams", cors(corsOptionsDelegate), streamFunctions.createStream);
+router.post("/api/streams", cors(corsOptions), streamFunctions.createStream);
 
-router.get("/api/streams", cors(corsOptionsDelegate), streamFunctions.fetchStreams);
+router.get("/api/streams", cors(corsOptions), streamFunctions.fetchStreams);
 
-router.get("/api/streams/:id", cors(corsOptionsDelegate), streamFunctions.fetchStream);
+router.get("/api/streams/:id", cors(corsOptions), streamFunctions.fetchStream);
 
-router.delete("/api/streams/:id", cors(corsOptionsDelegate), streamFunctions.deleteStream)
+router.delete("/api/streams/:id", cors(corsOptions), streamFunctions.deleteStream)
 
-router.patch("/api/streams/:id", cors(corsOptionsDelegate), streamFunctions.editStream);
+router.patch("/api/streams/:id", cors(corsOptions), streamFunctions.editStream);
 
 // //  If no API routes are hit, send the React app
 // router.use(function (req, res) {
