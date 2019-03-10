@@ -6,7 +6,8 @@ const db = require("../models");
 
 const cors = require('cors');
 const corsOptions = {
-  origin: [ 'http://localhost:8080/', 'https://streamezy.herokuapp.com'],
+  //http://localhost is here for jest testing to make requests to backend 
+  origin: [ 'http://localhost:8080/', 'http://localhost', 'https://streamezy.herokuapp.com'],
   optionsSuccessStatus: 200
 }
 
