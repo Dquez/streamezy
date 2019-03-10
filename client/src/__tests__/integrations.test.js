@@ -44,13 +44,13 @@ describe('StreamList', ()=>{
     })
 })
 
-// describe('StreamCreate', ()=>{
-//     it('can display form to create a stream', ()=>{
-//         wrapper.find('.create-stream').at(0).simulate('click',  { button: 0 });
-//         wrapper.update();
-//         expect(wrapper.containsMatchingElement(<StreamForm/>)).toBeTruthy();
-//     })
-// })
+describe('StreamCreate', ()=>{
+    it('can display form to create a stream', ()=>{
+        wrapper.find('.create-stream').at(1).simulate('click',  { button: 0 });
+        wrapper.update();
+        expect(wrapper.containsMatchingElement(<StreamForm/>)).toBeTruthy();
+    })
+})
 
 // describe('StreamShow', ()=>{
 //     it("can display a specific stream when you click on the stream's link tag", (done)=>{
