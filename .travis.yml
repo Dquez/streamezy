@@ -1,4 +1,7 @@
 sudo: requied
+# language: node_js
+# node_js:
+#   - "10.15.3"
 services:
   - docker
 
@@ -7,3 +10,14 @@ before_install:
 
 script: 
   - docker run dquez/client-test npm test -- --coverage
+
+after_success:
+  - docker build -t dquez/streamezy-client ./client
+  - docker build -t dquez/streamezy-nginx ./nginx
+  - docker build -t dquez/streamezy-server ./server
+  - docker build -t dquez/streamezy-rtmpserver ./rtmpserver
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push dquez/streamezy-client
+  - docker push dquez/streamezy-nginx
+  - docker push dquez/streamezy-server
+  - docker push dquez/streamezy-rtmpserver

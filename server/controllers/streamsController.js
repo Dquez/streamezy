@@ -3,12 +3,12 @@ const router = require("express").Router();
 const db = require("../models");
 
 // Cors setup
+
 const cors = require('cors');
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: [ 'http://localhost:8080/', 'https://streamezy.herokuapp.com'],
   optionsSuccessStatus: 200
 }
-router.use(cors());
 
 const streamFunctions = {
   fetchStreams (req, res) {
@@ -47,13 +47,13 @@ const streamFunctions = {
 
 router.post("/api/streams", cors(corsOptions), streamFunctions.createStream);
 
-router.get("/api/streams", streamFunctions.fetchStreams);
+router.get("/api/streams", cors(corsOptions), streamFunctions.fetchStreams);
 
-router.get("/api/streams/:id", streamFunctions.fetchStream);
+router.get("/api/streams/:id", cors(corsOptions), streamFunctions.fetchStream);
 
-router.delete("/api/streams/:id", streamFunctions.deleteStream)
+router.delete("/api/streams/:id", cors(corsOptions), streamFunctions.deleteStream)
 
-router.patch("/api/streams/:id", streamFunctions.editStream);
+router.patch("/api/streams/:id", cors(corsOptions), streamFunctions.editStream);
 
 // //  If no API routes are hit, send the React app
 // router.use(function (req, res) {

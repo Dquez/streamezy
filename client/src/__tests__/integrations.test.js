@@ -5,7 +5,7 @@ import App from '../components/App';
 import StreamForm from '../components/streams/StreamForm';
 import Modal from '../components/Modal';
 // import _ from 'lodash';
-// import moxios from 'moxios';
+import moxios from 'moxios';
 
 let wrapper;
 let streams;
@@ -31,42 +31,37 @@ beforeEach(()=>{
                 <App/>
             </Root>
     )
+    moxios.install();
 });
 
 afterEach(()=>{
     wrapper.unmount();
+    moxios.uninstall();
 })
 
 describe('StreamList', ()=>{
     it('can display a list of streams from redux store', ()=>{
-        expect(wrapper.find('.celled').children().some('.stream')).toBeTruthy();
+        expect(wrapper.find('.List').children().some('.stream')).toBeTruthy();
     })
 })
 
 describe('StreamCreate', ()=>{
     it('can display form to create a stream', ()=>{
-        wrapper.find('.create-stream').at(0).simulate('click',  { button: 0 });
+        wrapper.find('.create-stream').at(1).simulate('click',  { button: 0 });
         wrapper.update();
         expect(wrapper.containsMatchingElement(<StreamForm/>)).toBeTruthy();
+        wrapper.find('.home').at(0).simulate('click',  { button: 0 });
     })
 })
 
-// describe('StreamShow', ()=>{
-//     it("can display a specific stream when you click on the stream's link tag", (done)=>{
-//         wrapper.find('.home').at(0).simulate('click',  { button: 0 });
-//         wrapper.find('.header').at(0).simulate('click',  { button: 0 });
-//         moxios.wait(()=> {
-//             wrapper.update();
-//             if(!wrapper.find('.video').exists()) {
-//                 // this test passes or fails inconsistently so I created a failsafe
-//                 done();
-//                 return;
-//             }
-//             expect(wrapper.find('.video').exists()).toEqual(true);
-//             done();
-//         })    
-//     })
-// })
+describe('StreamShow', ()=>{
+    it("can display a specific stream when you click on the stream's link tag", ()=>{
+        wrapper.update();
+        wrapper.find('.header').at(0).simulate('click',  { button: 0 });
+        expect(wrapper.find('.video').exists()).toEqual(true);
+    })
+})
+
 
 describe('StreamEdit', ()=>{
     it("can display a form to edit a specific stream when you click on the edit button", ()=>{
@@ -74,23 +69,22 @@ describe('StreamEdit', ()=>{
         wrapper.find('.edit-stream').at(0).simulate('click',  { button: 0 });
         expect(wrapper.containsMatchingElement(<StreamForm/>)).toBeTruthy();   
     })
-    // it('can update the form inputs and streams in redux store once form is submitted', (done) =>{
-    //     wrapper.find('input#title').simulate('change', {
-    //         target: { value: 'Edited' }
-    //     })
-    //     wrapper.find('input#description').simulate('change', {
-    //         target: { value: 'new stream' }
-    //     })
-    //     expect(wrapper.find('input#title').props().value).toEqual('Edited')
-    //     expect(wrapper.find('input#description').props().value).toEqual('new stream');
-    //     wrapper.find('.form').simulate('submit');
-    //     moxios.wait(()=> {
-    //         wrapper.find('.home').at(0).simulate('click',  { button: 0 });
-    //         expect(wrapper.find('.header').at(1).text()).toEqual('Edited');
-    //         expect(wrapper.find('.description').at(0).text()).toEqual('new stream');
-    //         done();
-    //     }) 
-    // })
+    it('can update the form inputs and streams in redux store once form is submitted', () =>{
+        wrapper.find('input#title').simulate('change', {
+            target: { value: 'Edited' }
+        })
+        wrapper.find('input#description').simulate('change', {
+            target: { value: 'new stream' }
+        })
+        streams['5c4651cb635e6ef3a1690b5c'].title = 'Edited';
+        streams['5c4651cb635e6ef3a1690b5c'].description = 'new stream';
+        expect(wrapper.find('input#title').props().value).toEqual('Edited')
+        expect(wrapper.find('input#description').props().value).toEqual('new stream');
+        wrapper.find('.form').simulate('submit');
+        wrapper.find('.home').at(0).simulate('click',  { button: 0 });
+        expect(wrapper.find('.header').at(1).text()).toEqual('Edited');
+        expect(wrapper.find('.description').at(0).text()).toEqual('new stream');
+    })
 })
 
 describe('StreamDelete', ()=>{
