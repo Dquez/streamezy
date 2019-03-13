@@ -11,9 +11,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json({ type: '*/*' }));
 
 // Serve up static assets
-// app.use(express.static("client/build"));
+app.use(express.static('../client/build'));
+
 // Add router/controller
 app.use(streamsController);
+
 
 // Set up promises with mongoose
 mongoose.Promise = global.Promise;
