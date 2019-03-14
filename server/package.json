@@ -7,7 +7,7 @@
     "debug": "concurrently \"node --inspect-brk=43240 server.js\" \"npm run client\"",
     "server": "node server.js",
     "client": "node scripts/start-client.js",
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "build": "node scripts/build.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "installDeps": "yarn && cd client && yarn"
