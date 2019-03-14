@@ -1,6 +1,7 @@
 build:
   docker:
-    client: ./client/Dockerfile
     nginx: ./nginx/Dockerfile
-    rtmpserver: ./rtmpserver/Dockerfile
     server: ./server/Dockerfile
+    client: ./client/Dockerfile
+    rtmpserver: ./rtmpserver/Dockerfile
+    
