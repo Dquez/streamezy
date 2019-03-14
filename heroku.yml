@@ -1,7 +1,0 @@
-build:
-  docker:
-    nginx: ./nginx/Dockerfile
-    server: ./server/Dockerfile
-    client: ./client/Dockerfile
-    rtmpserver: ./rtmpserver/Dockerfile
-    
