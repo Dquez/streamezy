@@ -13,21 +13,11 @@ services:
       - "27017:27017"
       - "45011:45011"
   server:
-    build:
-      dockerfile: Dockerfile
-      context: ./server
-    # volumes:
-    #   - /app/node_modules
-    #   - ./server:/app 
+    image: dquez/streamezy-server
     env_file:
       - .env 
   client:
-    build:
-      dockerfile: Dockerfile
-      context: ./client
-    # volumes:
-    #   - /app/node_modules
-    #   - ./client:/app
+    image: dquez/streamezy-client
   rtmp:
     build:
       dockerfile: Dockerfile
