@@ -7,7 +7,7 @@
     "debug": "concurrently \"node --inspect-brk=43240 server.js\" \"npm run client\"",
     "server": "node server.js",
     "client": "node scripts/start-client.js",
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "build": "node scripts/build.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "installDeps": "yarn && cd client && yarn"
@@ -23,6 +23,7 @@
     "body-parser": "^1.17.2",
     "bson": "^3.0.2",
     "cors": "^2.8.5",
+    "dotenv": "^5.0.0",
     "express": "^4.15.4",
     "mongoose": "^4.11.7"
   }

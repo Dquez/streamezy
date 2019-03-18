@@ -6,7 +6,6 @@ Streamezy is a MERN-redux, single-page web application that allows users to crea
 
 ## Getting Started
 **Assuming you have MongoDB installed** `mongod`
-* *in a new terminal window* `mongo`
 
 
 **With Docker**
@@ -22,10 +21,12 @@ Streamezy is a MERN-redux, single-page web application that allows users to crea
 * [auth0](https://developers.google.com/identity/protocols/OAuth2) - Client Side Javascript authentication service
 * [axios](https://www.npmjs.com/package/axios) - Make XMLHttpRequests from the browser
 * [docker](https://www.docker.com) - Packaged Software into Standardized Units for Development, Shipment and Deployment
+* [dockhero heroku addon](https://elements.heroku.com/addons/dockhero) - Docker Runtime as a service, with Static IP and more. Using dockhero to have access to docker swarm to spin up multiple containers on heroku
 * [enzyme](https://airbnb.io/enzyme/) - Enzyme is a JavaScript Testing utility for React
 * [express](https://www.npmjs.com/package/express) - Framework we used to handle HTTP requests
 * [jest](https://jestjs.io/) - Front-end JavaScript testing library with little configuration required. 
 * [mongoose](https://www.npmjs.com/package/mongoose) Mongoose is a MongoDB object modeling tool designed to work in an asynchronous environment.
+* [mLab MongoDB heroku addon](https://elements.heroku.com/addons/mongolab) Create databases and replica set clusters on-demand. Scale up and down with ease using this cloud storage
 * [node-media-server](https://www.npmjs.com/package/node-media-server) - A Node.js implementation of RTMP/HTTP-FLV/WS-FLV/HLS/DASH Media Server
 * [react](https://reactjs.org/) - A JavaScript library for building component-based user interfaces
 * [react-router-dom](https://www.npmjs.com/package/react-router) - Enables client-side routing and component rendering

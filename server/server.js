@@ -4,6 +4,7 @@ const app = express();
 const mongoose = require("mongoose");
 const PORT = process.env.PORT || 3001;
 const bodyParser = require("body-parser");
+// require('dotenv').config()
 const streamsController = require("./controllers/streamsController");
 
 // Configure body parser for AJAX requests

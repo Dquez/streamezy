@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 services:
   nginx:
     restart: always
@@ -23,7 +23,7 @@ services:
       - .env 
   client:
     build:
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
       context: ./client
     volumes:
       - /app/node_modules
