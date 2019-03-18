@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 services:
   nginx:
     restart: always
@@ -16,18 +16,18 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./server
-    volumes:
-      - /app/node_modules
-      - ./server:/app 
+    # volumes:
+    #   - /app/node_modules
+    #   - ./server:/app 
     env_file:
       - .env 
   client:
     build:
       dockerfile: Dockerfile
       context: ./client
-    volumes:
-      - /app/node_modules
-      - ./client:/app
+    # volumes:
+    #   - /app/node_modules
+    #   - ./client:/app
   rtmp:
     build:
       dockerfile: Dockerfile
