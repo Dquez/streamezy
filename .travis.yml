@@ -23,7 +23,7 @@ deploy:
   provider: elasticbeanstalk
   region: us-east-1
   app: streamezy
-  env: streamezy-env
+  env: Streamezy-env
   bucket_name: elasticbeanstalk-us-east-1-172287926365
   bucket_path: streamezy
   on:

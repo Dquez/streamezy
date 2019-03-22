@@ -7,11 +7,6 @@ services:
       context: ./nginx
     ports:
       - '8080:80'
-  mongodb:
-    image: 'mongo:latest'
-    ports:
-      - "27017:27017"
-      - "45011:45011"
   server:
     build:
       dockerfile: Dockerfile

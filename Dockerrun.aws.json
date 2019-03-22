@@ -8,9 +8,6 @@
             "essential": false,
             "memory": 128
         }, 
-        
-        
-        
         {
             "name": "server",
             "image": "dquez/streamezy-server",
@@ -36,7 +33,7 @@
                     "containerPort": 80
                 }
             ],
-            "links": ["client", "server"],
+            "links": ["client", "server", "rtmpserver"],
             "memory": 128
         }
     ]
