@@ -1,0 +1,40 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "name": "client",
+            "image": "dquez/streamezy-client",
+            "hostname": "client",
+            "essential": false,
+            "memory": 128
+        }, 
+        {
+            "name": "server",
+            "image": "dquez/streamezy-server",
+            "hostname": "server",
+            "essential": false,
+            "memory": 128
+        },
+        {
+            "name": "rtmpserver",
+            "image": "dquez/streamezy-rtmpserver",
+            "hostname": "rtmpserver",
+            "essential": false,
+            "memory": 128
+        },
+        {
+            "name": "nginx",
+            "image": "dquez/streamezy-nginx",
+            "hostname": "nginx",
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links": ["client", "server", "rtmpserver"],
+            "memory": 128
+        }
+    ]
+}
