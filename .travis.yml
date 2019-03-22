@@ -18,3 +18,18 @@ after_success:
   - docker push dquez/streamezy-nginx
   - docker push dquez/streamezy-server
   - docker push dquez/streamezy-rtmpserver
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-1
+  app: streamezy
+  env: streamezy-env
+  bucket_name: elasticbeanstalk-us-east-1-172287926365
+  bucket_path: streamezy
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
+
+    
