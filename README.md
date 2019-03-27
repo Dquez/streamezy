@@ -18,7 +18,7 @@ Streamezy is a MERN-redux, single-page web application that allows users to crea
 
 ## Built With
 
-* [auth0](https://developers.google.com/identity/protocols/OAuth2) - Client Side Javascript authentication service
+* [Oauth2](https://developers.google.com/identity/protocols/OAuth2) - Client Side Javascript authentication service
 * [axios](https://www.npmjs.com/package/axios) - Make XMLHttpRequests from the browser
 * [docker](https://www.docker.com) - Packaged Software into Standardized Units for Development, Shipment and Deployment
 * [dockhero heroku addon](https://elements.heroku.com/addons/dockhero) - Docker Runtime as a service, with Static IP and more. Using dockhero to have access to docker swarm to spin up multiple containers on heroku
